@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khảo sát vị trí việc làm</title>
+<style>
+  :root{--xanh:#1F4E79;--nhat:#EAF2FB;--xam:#555;--do:#C0392B;--cam:#D35400;--luc:#1E8449;--vien:#C9D6E3}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;font-size:17px;color:#222;background:#F4F7FA}
+  header{background:var(--xanh);color:#fff;padding:18px 16px}
+  header h1{margin:0;font-size:22px}
+  header p{margin:6px 0 0;font-size:15px;opacity:.9}
+  main{max-width:1100px;margin:0 auto;padding:16px}
+  section{background:#fff;border:1px solid var(--vien);border-radius:14px;padding:18px;margin-bottom:18px}
+  h2{margin:0 0 6px;color:var(--xanh);font-size:20px}
+  .huong-dan{font-size:15px;color:var(--xam);margin:0 0 14px;line-height:1.45}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+  label{display:block;font-weight:bold;font-size:15px;margin-bottom:4px}
+  label small{font-weight:normal;color:var(--xam)}
+  input,select,textarea{width:100%;font-size:17px;padding:10px;border:1px solid var(--vien);border-radius:10px;background:#fff}
+  textarea{min-height:64px;resize:vertical}
+  input:invalid{border-color:var(--do)}
+  .btn{display:inline-block;border:0;border-radius:12px;padding:12px 18px;font-size:17px;font-weight:bold;cursor:pointer;color:#fff;background:var(--xanh);margin:4px 6px 4px 0}
+  .btn.nho{padding:8px 12px;font-size:15px}
+  .btn.xam{background:#7F8C8D}.btn.do{background:var(--do)}.btn.luc{background:var(--luc)}.btn.cam{background:var(--cam)}
+  .btn:disabled{opacity:.5;cursor:default}
+  .vai-tro{border:2px solid var(--xanh);border-radius:14px;padding:14px;margin:14px 0;background:var(--nhat)}
+  .vai-tro h3{margin:0 0 10px;font-size:18px;color:var(--xanh)}
+  .nhiem-vu{background:#fff;border:1px solid var(--vien);border-radius:12px;padding:12px;margin:10px 0}
+  .nhiem-vu .dau{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .nhan{display:inline-block;padding:4px 10px;border-radius:8px;color:#fff;font-weight:bold;font-size:14px}
+  .TX{background:var(--luc)}.DK{background:#2874A6}.DX{background:var(--cam)}
+  .tong{font-weight:bold;color:var(--xanh);font-size:16px}
+  .thanh{position:sticky;bottom:0;background:#fff;border-top:3px solid var(--xanh);padding:10px 16px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-size:15px}
+  .loi{background:#FDEDEC;border:1px solid var(--do);color:#7B241C;border-radius:10px;padding:12px;margin:10px 0;white-space:pre-line}
+  .canh-bao{background:#FEF5E7;border:1px solid var(--cam);color:#784212;border-radius:10px;padding:12px;margin:10px 0;white-space:pre-line}
+  .xong{background:#E9F7EF;border:1px solid var(--luc);color:#145A32;border-radius:10px;padding:16px;font-size:18px}
+  table.matran{width:100%;border-collapse:collapse;font-size:15px}
+  table.matran td,table.matran th{border:1px solid var(--vien);padding:8px;text-align:center}
+  table.matran td:first-child{text-align:left;font-weight:bold}
+  .chk{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:6px;font-size:15px}
+  .chk label{font-weight:normal;display:flex;gap:8px;align-items:center}
+  .chk input{width:auto}
+  .an{display:none}
+</style>
+</head>
+<body>
+<header>
+  <h1>Khảo sát vị trí việc làm, Trường Đại học Công Đoàn</h1>
+  <p>Kỳ thống kê khối lượng công việc: 01/10/2025 đến hết 30/9/2026 (Hướng dẫn 07-HD/BTCTW). Kê khai công việc đã thực sự làm, mỗi việc chỉ ở một vai trò, mọi việc phải đếm được.</p>
+</header>
+<main>
+
+<section id="secA">
+  <h2>A. Định danh, đơn vị, vị trí việc làm chính</h2>
+  <p class="huong-dan">Điền theo quyết định bổ nhiệm, phân công hoặc hợp đồng. Có quyết định bổ nhiệm chức vụ quản lý thì VTVL chính là chức vụ đó; giảng dạy kê ở vai trò K.01.</p>
+  <div class="grid">
+    <div><label>Email</label><input id="a_email" type="email" required></div>
+    <div><label>Họ và tên</label><input id="a_hoten" required minlength="3" maxlength="80"></div>
+    <div><label>Mã nhân sự <small>(theo Phòng Tổ chức)</small></label><input id="a_ma_nhansu" required maxlength="20"></div>
+    <div><label>Đơn vị công tác</label><select id="a_donvi" required></select></div>
+    <div><label>Bộ môn, tổ, ban <small>(nếu có)</small></label><input id="a_bophan" maxlength="80"></div>
+    <div><label>Chế độ làm việc</label><select id="a_chedo" required></select></div>
+    <div><label>Chức danh nghề nghiệp hiện giữ</label><select id="a_cdnn" required></select></div>
+    <div><label>Bậc nghề nghiệp đã bố trí</label><select id="a_bac" required></select></div>
+    <div><label>Vị trí việc làm chính</label><select id="a_vtvl_chinh" required></select></div>
+    <div id="o_gankem" class="an"><label>VTVL chuyên môn gắn kèm <small>(bắt buộc với VTVL quản lý)</small></label><select id="a_vtvl_gankem"></select></div>
+    <div id="o_chucvu" class="an"><label>Tên chức vụ theo quyết định</label><input id="a_chucvu_text" maxlength="100"></div>
+    <div><label>Căn cứ <small>(số, ngày quyết định hoặc hợp đồng)</small></label><input id="a_cancu_vtvl" required maxlength="120"></div>
+    <div><label>Số tháng đã làm VTVL này</label><input id="a_thang_tai_vtvl" type="number" min="0" max="600" required></div>
+    <div><label>Quỹ thời gian làm việc</label><select id="a_quy_thoigian" required></select></div>
+    <div><label>Nguồn kinh phí trả lương</label><select id="a_nguon_kinhphi" required></select></div>
+    <div><label>Tình trạng đến 30/9/2026</label><select id="a_tien_dua_di" required></select></div>
+  </div>
+</section>
+
+<section id="secB">
+  <h2>B và C. Vai trò đang đảm nhiệm và nhiệm vụ của từng vai trò</h2>
+  <p class="huong-dan">Vai trò 1 là VTVL chính. Thêm một vai trò cho mỗi nhiệm vụ kiêm nhiệm có văn bản giao, bầu, cử. Chia 100% thời gian cho các vai trò. Trong mỗi vai trò, kê nhiệm vụ thường xuyên (TX) trước, định kỳ (DK) sau, đột xuất (DX) cuối. Mô tả bắt đầu bằng động từ hành động, có đối tượng và kết quả; không bắt đầu bằng "tham gia, phối hợp, hỗ trợ, thực hiện".</p>
+  <div id="roles"></div>
+  <button class="btn cam" onclick="addRole()">+ Thêm vai trò kiêm nhiệm</button>
+</section>
+
+<section id="secD">
+  <h2>D. Khung năng lực, tiêu chuẩn, điều kiện làm việc</h2>
+  <div class="grid">
+    <div><label>Trình độ đào tạo cao nhất</label><select id="d_trinh_do" required></select></div>
+    <div><label>Ngành, chuyên ngành</label><input id="d_chuyen_nganh" required maxlength="120"></div>
+    <div><label>Học hàm</label><select id="d_hoc_ham" required></select></div>
+    <div><label>Lý luận chính trị</label><select id="d_llct" required></select></div>
+    <div><label>Quản lý nhà nước, lãnh đạo quản lý</label><select id="d_qlnn" required></select></div>
+    <div><label>Ngoại ngữ <small>(bậc theo Khung 6 bậc)</small></label><select id="d_ngoai_ngu_bac" required></select></div>
+    <div><label>Tên ngoại ngữ</label><input id="d_ngoai_ngu_ten" maxlength="40" placeholder="Tiếng Anh"></div>
+    <div><label>Mức độ rủi ro, điều kiện đặc thù</label><select id="d_rui_ro" required></select></div>
+    <div><label>Quan hệ công tác bên ngoài <small>(cơ quan làm việc trực tiếp)</small></label><input id="d_quan_he_ben_ngoai" maxlength="300"></div>
+  </div>
+  <label style="margin-top:12px">Chứng chỉ (chọn nhiều)</label><div class="chk" id="d_chung_chi"></div>
+  <label style="margin-top:12px">Kỹ năng chuyên môn chính (chọn nhiều)</label><div class="chk" id="d_ky_nang"></div>
+  <label style="margin-top:12px">Phạm vi quyền hạn (chọn nhiều)</label><div class="chk" id="d_quyen_han"></div>
+  <label style="margin-top:12px">Đơn vị phối hợp thường xuyên trong trường (chọn nhiều)</label><div class="chk" id="d_quan_he_noi_bo"></div>
+  <label style="margin-top:12px">Điều kiện làm việc hiện có (chọn nhiều)</label><div class="chk" id="d_dieu_kien"></div>
+  <label style="margin-top:12px">Năng lực số <small>(1 chưa dùng, 2 dùng khi có hướng dẫn, 3 tự chủ, 4 hướng dẫn người khác)</small></label>
+  <table class="matran" id="d_nang_luc_so"></table>
+</section>
+
+<section id="secE">
+  <h2>E. Đề xuất, kiến nghị</h2>
+  <div class="grid">
+    <div><label>Mức tải công việc thực tế</label><select id="e_muc_tai" required></select></div>
+    <div><label>Nhiệm vụ đang làm nhưng không thuộc chức năng đơn vị hoặc VTVL</label><textarea id="e_nv_ngoai_chuc_nang" maxlength="600"></textarea></div>
+    <div><label>Nhiệm vụ trùng với đơn vị hoặc người khác</label><textarea id="e_trung_lap" maxlength="600"></textarea></div>
+    <div><label>Đề xuất định mức <small>(nêu mã nhiệm vụ)</small></label><textarea id="e_de_xuat_dinh_muc" maxlength="600"></textarea></div>
+    <div><label>Đề xuất sắp xếp lại phân công, kiêm nhiệm</label><textarea id="e_de_xuat_phan_cong" maxlength="600"></textarea></div>
+    <div><label>Nhiệm vụ có thể giảm nhờ phần mềm, AI, thuê dịch vụ</label><textarea id="e_tac_dong_cds" maxlength="600"></textarea></div>
+  </div>
+  <p style="margin-top:14px"><label style="display:flex;gap:10px;align-items:center;font-weight:normal"><input id="e_cam_ket" type="checkbox" style="width:24px;height:24px"> Tôi xác nhận kê khai đúng công việc thực tế trong kỳ 01/10/2025 đến 30/9/2026.</label></p>
+  <div id="ketqua"></div>
+  <button class="btn xam" onclick="kiemTra()">Kiểm tra</button>
+  <button class="btn luc" id="btnNop" onclick="nop()">Nộp hồ sơ</button>
+</section>
+</main>
+
+<div class="thanh">
+  <span>Tổng tỷ lệ vai trò: <b id="sumPct">0</b>%</span>
+  <span>Số vai trò: <b id="sumRole">1</b></span>
+  <span>Số nhiệm vụ: <b id="sumTask">0</b></span>
+  <span>Tổng giờ trong kỳ: <b id="sumGio">0</b> giờ <small>(tham chiếu <span id="gioTC"></span> giờ/năm)</small></span>
+</div>
+
+<script>
+var CFG = <?!= JSON.stringify(cfg) ?>;
+var USER_EMAIL = '<?= email ?>';
+var roles = [];
+
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function list(n){return CFG[n]||[];}
+function optsTen(n,sel,withMa){return '<option value="">-- chọn --</option>'+list(n).map(function(o){var v=withMa?o.ma:o.ten;return '<option value="'+esc(v)+'"'+(v===sel?' selected':'')+'>'+esc(withMa?o.ma+' '+o.ten:o.ten)+'</option>';}).join('');}
+function tenVtvl(ma){var o=list('VTVL').filter(function(x){return x.ma===ma;})[0];return o?o.ten:'';}
+function tenK(ma){var o=list('K').filter(function(x){return x.ma===ma;})[0];return o?o.ten:'';}
+function laQuanLy(ma){return /^1/.test(ma||'');}
+function num(x){var n=parseFloat(String(x).replace(',','.'));return isNaN(n)?0:n;}
+function r1(x){return Math.round(x*10)/10;}
+function $(id){return document.getElementById(id);}
+function fill(id,n){$(id).innerHTML=optsTen(n,'',false);}
+function fillChk(id,n){$(id).innerHTML=list(n).map(function(o){return '<label><input type="checkbox" value="'+esc(o.ten)+'"> '+esc(o.ten)+'</label>';}).join('');}
+function chkVals(id){return Array.prototype.map.call($(id).querySelectorAll('input:checked'),function(i){return i.value;}).join('; ');}
+
+function init(){
+  $('gioTC').textContent=CFG.GIO_THAM_CHIEU;
+  $('a_email').value=USER_EMAIL;
+  ['a_donvi:DONVI','a_chedo:CHEDO','a_cdnn:CDNN','a_bac:BAC','a_quy_thoigian:QUYTG','a_nguon_kinhphi:KINHPHI','a_tien_dua_di:TIENDUADI',
+   'd_trinh_do:TRINHDO','d_hoc_ham:HOCHAM','d_llct:LLCT','d_qlnn:QLNN','d_ngoai_ngu_bac:NGOAINGU','d_rui_ro:RUIRO','e_muc_tai:MUCTAI']
+   .forEach(function(p){var a=p.split(':');fill(a[0],a[1]);});
+  $('a_vtvl_chinh').innerHTML=optsTen('VTVL','',true);
+  $('a_vtvl_gankem').innerHTML='<option value="">-- chọn --</option>'+list('VTVL').filter(function(o){return !laQuanLy(o.ma);}).map(function(o){return '<option value="'+o.ma+'">'+esc(o.ma+' '+o.ten)+'</option>';}).join('');
+  ['d_chung_chi:CHUNGCHI','d_ky_nang:KYNANG','d_quyen_han:QUYENHAN','d_quan_he_noi_bo:DONVI','d_dieu_kien:DIEUKIEN'].forEach(function(p){var a=p.split(':');fillChk(a[0],a[1]);});
+  $('d_nang_luc_so').innerHTML='<tr><th>Năng lực</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>'+list('NANGLUCSO').map(function(o,i){return '<tr><td>'+esc(o.ten)+'</td>'+[1,2,3,4].map(function(v){return '<td><input type="radio" name="nls'+i+'" value="'+v+'"></td>';}).join('')+'</tr>';}).join('');
+  $('a_vtvl_chinh').addEventListener('change',function(){
+    var ma=this.value;$('o_gankem').classList.toggle('an',!laQuanLy(ma));$('o_chucvu').classList.toggle('an',!laQuanLy(ma));
+    roles[0].b_ma_vaitro=ma;roles[0].b_ten_vaitro=tenVtvl(ma);renderRoles();
+  });
+  roles.push(newRole('',''));
+  renderRoles();
+}
+
+function newRole(ma,ten){return {b_ma_vaitro:ma,b_ten_vaitro:ten,b_ten_cu_the:'',b_cancu:'',b_tu_ngay:'',b_den_ngay:'',b_ty_le:roles.length?0:100,b_dinh_muc_giam:0,tasks:[]};}
+function newTask(loai){return {c_loai:loai,c_mo_ta:'',c_quy_trinh:'',c_san_pham:'',c_don_vi:'',c_tan_suat:'',c_so_luong_ky:'',c_gio_1dv:'',c_phuc_tap:'',c_vai_tro_thuc_hien:'',c_cancu:'',c_muc_so_hoa:'',c_ghi_chu:''};}
+function addRole(){if(roles.length>=8){alert('Tối đa 8 vai trò.');return;}roles.push(newRole('',''));renderRoles();}
+function delRole(i){if(i===0)return;if(confirm('Xóa vai trò '+(i+1)+' và toàn bộ nhiệm vụ của nó?')){roles.splice(i,1);renderRoles();}}
+function addTask(ri,loai){if(roles[ri].tasks.length>=25){alert('Tối đa 25 nhiệm vụ cho một vai trò.');return;}roles[ri].tasks.push(newTask(loai));renderRoles();}
+function delTask(ri,ti){roles[ri].tasks.splice(ti,1);renderRoles();}
+
+function roleHeader(ri,r){
+  var ma=r.b_ma_vaitro;
+  var sel= ri===0
+    ? '<input value="'+esc(ma?ma+' '+r.b_ten_vaitro:'Chọn VTVL chính ở phân đoạn A')+'" disabled>'
+    : '<select data-r="'+ri+'" data-f="b_ma_vaitro">'+optsTen('K',ma,true)+'</select>';
+  var giam= ma==='K.01' ? '<div><label>% định mức giờ chuẩn được giảm theo chức vụ</label><input type="number" min="0" max="100" data-r="'+ri+'" data-f="b_dinh_muc_giam" value="'+esc(r.b_dinh_muc_giam)+'"></div>' : '';
+  return '<h3>Vai trò '+(ri+1)+(ri===0?' (VTVL chính)':' (kiêm nhiệm)')+'</h3><div class="grid">'
+    +'<div><label>Mã vai trò</label>'+sel+'</div>'
+    +'<div><label>Tên cụ thể <small>(hội đồng, lớp, chi bộ...)</small></label><input data-r="'+ri+'" data-f="b_ten_cu_the" value="'+esc(r.b_ten_cu_the)+'" maxlength="120"></div>'
+    +'<div><label>Căn cứ giao, bầu, cử</label><input data-r="'+ri+'" data-f="b_cancu" value="'+esc(r.b_cancu)+'" maxlength="120"></div>'
+    +'<div><label>Từ ngày</label><input type="date" data-r="'+ri+'" data-f="b_tu_ngay" value="'+esc(r.b_tu_ngay)+'"></div>'
+    +'<div><label>Đến ngày <small>(trống nếu còn giữ)</small></label><input type="date" data-r="'+ri+'" data-f="b_den_ngay" value="'+esc(r.b_den_ngay)+'"></div>'
+    +'<div><label>Tỷ lệ thời gian (%)</label><input type="number" min="1" max="100" data-r="'+ri+'" data-f="b_ty_le" value="'+esc(r.b_ty_le)+'"></div>'+giam+'</div>';
+}
+function taskHtml(ri,ti,t){
+  var k='data-r="'+ri+'" data-t="'+ti+'" ';
+  function sel(f,n){return '<select '+k+'data-f="'+f+'">'+optsTen(n,t[f],false)+'</select>';}
+  return '<div class="nhiem-vu"><div class="dau"><span class="nhan '+t.c_loai+'">'+t.c_loai+' '+({TX:'Thường xuyên',DK:'Định kỳ',DX:'Đột xuất'})[t.c_loai]+' · Nhiệm vụ '+(ti+1)+'</span>'
+    +'<span class="tong">Tổng giờ: <span id="tg'+ri+'_'+ti+'">'+r1(num(t.c_so_luong_ky)*num(t.c_gio_1dv))+'</span></span>'
+    +'<button class="btn do nho" onclick="delTask('+ri+','+ti+')">Xóa</button></div><div class="grid">'
+    +'<div style="grid-column:1/-1"><label>Mô tả <small>(Động từ + đối tượng + kết quả, 15 đến 200 ký tự)</small></label><input '+k+'data-f="c_mo_ta" value="'+esc(t.c_mo_ta)+'" maxlength="200" placeholder="Thẩm định hồ sơ miễn giảm học phí và trình quyết định"></div>'
+    +(t.c_loai==='DX'?'':'<div style="grid-column:1/-1"><label>Quy trình tóm tắt <small>(3 đến 5 bước, mỗi bước một dòng)</small></label><textarea '+k+'data-f="c_quy_trinh" maxlength="400">'+esc(t.c_quy_trinh)+'</textarea></div>')
+    +'<div><label>Sản phẩm đầu ra</label><input '+k+'data-f="c_san_pham" value="'+esc(t.c_san_pham)+'" maxlength="120"></div>'
+    +'<div><label>Đơn vị sản phẩm</label>'+sel('c_don_vi','DONVI_SP')+'</div>'
+    +'<div><label>Tần suất</label>'+sel('c_tan_suat','TANSUAT')+'</div>'
+    +'<div><label>Số lượng trong kỳ <small>(01/10/2025 đến 30/9/2026)</small></label><input type="number" min="0" max="10000" step="1" '+k+'data-f="c_so_luong_ky" value="'+esc(t.c_so_luong_ky)+'"></div>'
+    +'<div><label>Giờ cho 1 đơn vị <small>(giờ chuẩn: hệ số quy đổi)</small></label><input type="number" min="0.1" max="500" step="0.1" '+k+'data-f="c_gio_1dv" value="'+esc(t.c_gio_1dv)+'"></div>'
+    +'<div><label>Mức phức tạp</label>'+sel('c_phuc_tap','PHUCTAP')+'</div>'
+    +'<div><label>Vai trò thực hiện</label>'+sel('c_vai_tro_thuc_hien','VAITRO_TH')+'</div>'
+    +'<div><label>Mức số hóa</label>'+sel('c_muc_so_hoa','SOHOA')+'</div>'
+    +'<div><label>Căn cứ giao nhiệm vụ <small>(không bắt buộc)</small></label><input '+k+'data-f="c_cancu" value="'+esc(t.c_cancu)+'" maxlength="120"></div>'
+    +'<div><label>Ghi chú</label><input '+k+'data-f="c_ghi_chu" value="'+esc(t.c_ghi_chu)+'" maxlength="300"></div>'
+    +'</div></div>';
+}
+function renderRoles(){
+  $('roles').innerHTML=roles.map(function(r,ri){
+    return '<div class="vai-tro">'+roleHeader(ri,r)
+      +'<div style="margin-top:10px"><b>Nhiệm vụ của vai trò '+(ri+1)+'</b> · giờ: <b id="gr'+ri+'">0</b></div>'
+      +r.tasks.map(function(t,ti){return taskHtml(ri,ti,t);}).join('')
+      +'<button class="btn luc nho" onclick="addTask('+ri+',\'TX\')">+ Thường xuyên</button>'
+      +'<button class="btn nho" onclick="addTask('+ri+',\'DK\')">+ Định kỳ</button>'
+      +'<button class="btn cam nho" onclick="addTask('+ri+',\'DX\')">+ Đột xuất</button>'
+      +(ri>0?'<button class="btn do nho" onclick="delRole('+ri+')">Xóa vai trò</button>':'')
+      +'</div>';
+  }).join('');
+  recalc();
+}
+document.addEventListener('input',onEdit);document.addEventListener('change',onEdit);
+function onEdit(e){
+  var el=e.target;if(!el.dataset||el.dataset.r===undefined)return;
+  var ri=+el.dataset.r,f=el.dataset.f;
+  if(el.dataset.t!==undefined){roles[ri].tasks[+el.dataset.t][f]=el.value;}
+  else{roles[ri][f]=el.value;if(f==='b_ma_vaitro'){roles[ri].b_ten_vaitro=tenK(el.value);renderRoles();return;}}
+  recalc();
+}
+function recalc(){
+  var pct=0,gio=0,nTask=0;
+  roles.forEach(function(r,ri){
+    pct+=num(r.b_ty_le);var g=0;
+    r.tasks.forEach(function(t,ti){var tg=r1(num(t.c_so_luong_ky)*num(t.c_gio_1dv));g+=tg;nTask++;var el=$('tg'+ri+'_'+ti);if(el)el.textContent=tg;});
+    var gr=$('gr'+ri);if(gr)gr.textContent=r1(g);gio+=g;
+  });
+  $('sumPct').textContent=pct;$('sumPct').style.color=Math.abs(pct-100)<=1?'#1E8449':'#C0392B';
+  $('sumRole').textContent=roles.length;$('sumTask').textContent=nTask;$('sumGio').textContent=r1(gio);
+}
+
+function collect(){
+  var a={};['a_email','a_hoten','a_ma_nhansu','a_donvi','a_bophan','a_chedo','a_cdnn','a_bac','a_vtvl_chinh','a_vtvl_gankem','a_chucvu_text','a_cancu_vtvl','a_thang_tai_vtvl','a_quy_thoigian','a_nguon_kinhphi','a_tien_dua_di'].forEach(function(k){a[k]=$(k).value.trim();});
+  var d={};['d_trinh_do','d_chuyen_nganh','d_hoc_ham','d_llct','d_qlnn','d_rui_ro','d_quan_he_ben_ngoai'].forEach(function(k){d[k]=$(k).value.trim();});
+  d.d_ngoai_ngu=$('d_ngoai_ngu_bac').value+($('d_ngoai_ngu_ten').value?' '+$('d_ngoai_ngu_ten').value.trim():'');
+  ['d_chung_chi','d_ky_nang','d_quyen_han','d_quan_he_noi_bo','d_dieu_kien'].forEach(function(k){d[k]=chkVals(k);});
+  d.d_nang_luc_so=list('NANGLUCSO').map(function(o,i){var c=document.querySelector('input[name="nls'+i+'"]:checked');return o.ten+'='+(c?c.value:'');}).join('; ');
+  var e={};['e_muc_tai','e_nv_ngoai_chuc_nang','e_trung_lap','e_de_xuat_dinh_muc','e_de_xuat_phan_cong','e_tac_dong_cds'].forEach(function(k){e[k]=$(k).value.trim();});
+  e.e_cam_ket=$('e_cam_ket').checked;
+  return {a:a,d:d,e:e,roles:JSON.parse(JSON.stringify(roles))};
+}
+function validate(p){
+  var E=[],W=[],a=p.a;
+  [['a_email','Email'],['a_hoten','Họ và tên'],['a_ma_nhansu','Mã nhân sự'],['a_donvi','Đơn vị'],['a_chedo','Chế độ'],['a_cdnn','Chức danh nghề nghiệp'],['a_bac','Bậc'],['a_vtvl_chinh','VTVL chính'],['a_cancu_vtvl','Căn cứ'],['a_thang_tai_vtvl','Số tháng'],['a_quy_thoigian','Quỹ thời gian'],['a_nguon_kinhphi','Nguồn kinh phí'],['a_tien_dua_di','Tình trạng']]
+    .forEach(function(x){if(!a[x[0]])E.push('A: thiếu '+x[1]+'.');});
+  if(laQuanLy(a.a_vtvl_chinh)&&!a.a_vtvl_gankem)E.push('E07: VTVL quản lý phải chọn VTVL chuyên môn gắn kèm.');
+  var sum=p.roles.reduce(function(s,r){return s+num(r.b_ty_le);},0);
+  if(Math.abs(sum-100)>1)E.push('E01: Tổng tỷ lệ thời gian là '+sum+'%, phải bằng 100%.');
+  var tongGio=0,seen={},moTa={};
+  p.roles.forEach(function(r,i){
+    var nh='Vai trò '+(i+1);
+    if(!r.b_ma_vaitro)E.push(nh+': chưa chọn mã vai trò.');
+    if(i>0&&r.b_ma_vaitro==='K.01'&&!laQuanLy(a.a_vtvl_chinh))E.push(nh+': K.01 chỉ dành cho người có VTVL chính là quản lý.');
+    if(i>0&&r.b_ma_vaitro==='K.02'&&laQuanLy(a.a_vtvl_chinh))E.push(nh+': đã có chức vụ quản lý thì không chọn K.02.');
+    if(i>0&&r.b_ma_vaitro&&['K.09','K.10','K.99'].indexOf(r.b_ma_vaitro)<0){if(seen[r.b_ma_vaitro])E.push(nh+': mã '+r.b_ma_vaitro+' bị trùng.');seen[r.b_ma_vaitro]=1;}
+    if(i>0&&r.b_ma_vaitro&&!r.b_cancu)E.push(nh+': thiếu căn cứ giao, bầu, cử.');
+    if(!r.tasks.length)E.push(nh+': chưa có nhiệm vụ nào.');
+    if(!r.tasks.some(function(t){return t.c_loai==='TX';}))E.push('E02: '+nh+' không có nhiệm vụ thường xuyên (TX).');
+    var gr=0;
+    r.tasks.forEach(function(t,j){
+      var nv=nh+', nhiệm vụ '+(j+1);
+      if(!t.c_mo_ta||t.c_mo_ta.trim().length<15)E.push(nv+': mô tả tối thiểu 15 ký tự.');
+      else{
+        var lo=t.c_mo_ta.trim().toLowerCase();
+        if(list('TUCAM').some(function(c){return lo.indexOf(c.ten.toLowerCase())===0;}))E.push(nv+': không bắt đầu bằng "'+t.c_mo_ta.split(' ')[0]+'", hãy ghi động từ hành động và phần việc của mình.');
+        else if(!list('DONGTU').some(function(c){return lo.indexOf(c.ten.toLowerCase())===0;}))W.push('E03: '+nv+' nên bắt đầu bằng động từ hành động (soạn thảo, thẩm định, giảng dạy, xử lý...).');
+        var key=lo.replace(/\s+/g,' ');if(moTa[key])W.push('E08: '+nv+' trùng mô tả với '+moTa[key]+'. Mỗi việc chỉ kê ở một vai trò.');moTa[key]=nv;
+      }
+      if(t.c_loai!=='DX'&&!t.c_quy_trinh)E.push(nv+': thiếu quy trình tóm tắt.');
+      if(!t.c_san_pham)E.push(nv+': thiếu sản phẩm đầu ra.');
+      ['c_don_vi','c_tan_suat','c_phuc_tap','c_vai_tro_thuc_hien','c_muc_so_hoa'].forEach(function(f){if(!t[f])E.push(nv+': thiếu '+f.replace('c_','').replace(/_/g,' ')+'.');});
+      if(num(t.c_gio_1dv)<=0)E.push(nv+': giờ cho 1 đơn vị phải lớn hơn 0.');
+      if(t.c_loai!=='DX'&&num(t.c_so_luong_ky)<=0)E.push('E04: '+nv+' số lượng trong kỳ phải lớn hơn 0.');
+      if(num(t.c_gio_1dv)>200)W.push(nv+': '+t.c_gio_1dv+' giờ cho 1 đơn vị là rất lớn, kiểm tra lại đơn vị sản phẩm.');
+      gr+=num(t.c_so_luong_ky)*num(t.c_gio_1dv);
+    });
+    r._gio=gr;tongGio+=gr;
+  });
+  if(tongGio>0){p.roles.forEach(function(r,i){var tt=Math.round(r._gio/tongGio*100);if(Math.abs(tt-num(r.b_ty_le))>25)W.push('E06: Vai trò '+(i+1)+' khai '+r.b_ty_le+'% nhưng giờ kê chiếm '+tt+'%.');});}
+  if(a.a_tien_dua_di==='Không'&&(tongGio>2600||tongGio<800))W.push('E05: Tổng giờ '+r1(tongGio)+' nằm ngoài khoảng 800 đến 2.600 giờ/năm, hãy xem lại số lượng và giờ mỗi đơn vị.');
+  if(!p.d.d_trinh_do||!p.d.d_chuyen_nganh)E.push('D: thiếu trình độ hoặc chuyên ngành.');
+  if(p.d.d_nang_luc_so.indexOf('=;')>=0||/=$/.test(p.d.d_nang_luc_so))E.push('D: chưa chấm đủ 7 dòng năng lực số.');
+  if(!p.e.e_muc_tai)E.push('E: chưa chọn mức tải công việc.');
+  if(!p.e.e_cam_ket)E.push('Chưa tích xác nhận cam kết.');
+  return {E:E,W:W};
+}
+function hien(E,W){
+  $('ketqua').innerHTML=(E.length?'<div class="loi">Chưa nộp được, cần sửa '+E.length+' lỗi:\n'+E.map(function(x){return '• '+x;}).join('\n')+'</div>':'')
+    +(W.length?'<div class="canh-bao">Cảnh báo (vẫn nộp được, hãy xem lại):\n'+W.map(function(x){return '• '+x;}).join('\n')+'</div>':'');
+  if(!E.length&&!W.length)$('ketqua').innerHTML='<div class="xong">Dữ liệu hợp lệ, có thể nộp.</div>';
+}
+function kiemTra(){var p=collect();var v=validate(p);hien(v.E,v.W);return v;}
+function nop(){
+  var p=collect();var v=validate(p);hien(v.E,v.W);if(v.E.length){window.scrollTo(0,$('ketqua').offsetTop-80);return;}
+  if(v.W.length&&!confirm('Có '+v.W.length+' cảnh báo. Bạn xác nhận số liệu đúng thực tế và nộp?'))return;
+  p.warnings=v.W;$('btnNop').disabled=true;$('btnNop').textContent='Đang nộp...';
+  google.script.run.withSuccessHandler(function(res){
+    $('btnNop').disabled=false;$('btnNop').textContent='Nộp hồ sơ';
+    if(res.ok){$('ketqua').innerHTML='<div class="xong">Đã nộp thành công. Mã hồ sơ: <b>'+res.ma_hoso+'</b>. Tổng giờ kê khai: '+res.tong_gio+'. Hãy lưu mã này; nộp bản mới sẽ thay thế bản này.</div>';window.scrollTo(0,$('ketqua').offsetTop-80);}
+    else hien(res.errors,[]);
+  }).withFailureHandler(function(err){$('btnNop').disabled=false;$('btnNop').textContent='Nộp hồ sơ';hien(['Lỗi hệ thống: '+err.message],[]);}).submitForm(p);
+}
+init();
+</script>
+</body>
+</html>
